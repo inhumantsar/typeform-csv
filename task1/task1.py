@@ -12,7 +12,7 @@ def get_all_typeforms(apikey):
     get all typeforms available with the api key provided
     
     params
-        apikey    - string. default: hardcoded nastiness
+        apikey    - string. required.
     
     returns
         list of dicts. eg: {'id':'SoMeID', 'name': 'Some Name'}
@@ -27,9 +27,9 @@ def get_typeform_data(apikey, form_id=None):
     for a particular form.
     
     params
+        apikey    - string. required.
         form_id   - string. default: first form returned 
                     by get_all_typeforms()
-        apikey    - string. default: hardcoded nastiness
     
     '''
     if not form_id:
@@ -46,6 +46,14 @@ def get_typeform_data(apikey, form_id=None):
 def get_responses_csv(apikey, form_id=None):
     '''
     returns form responses as a CSV
+
+    params
+        apikey    - string. required.
+        form_id   - string. default: first form returned 
+                    by get_all_typeforms()
+   
+    returns
+        UTF-8 encoded string formatted as a CSV
     '''
     # load and checks
     data = get_typeform_data(apikey, form_id)
